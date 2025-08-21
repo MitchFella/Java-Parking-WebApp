@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Booking Confirmed • Parking App</title>
+    <h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+<h:body>
+<div class="container">
+    <h2>Booking created 🎉</h2>
+    <p class="subtitle">Your reference is <strong>#{bookingBean.lastId}</strong>.</p>
+
+    <div class="stack">
+        <p:button value="Manage bookings" outcome="manageBookings"/>
+        <p:button value="New Booking" outcome="newBooking" styleClass="ui-button-secondary"/>
+        <p:button value="Home" outcome="index" styleClass="ui-button-secondary"/>
+
+    </div>
+</div>
+</h:body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Register • Parking App</title>
+    <h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+<h:body>
+<div class="container">
+<h:form>
+    <h2>Create Account</h2>
+    <p class="subtitle">Just a few details to get started</p>
+
+    <p:panelGrid columns="2" columnClasses="label,value">
+        <h:outputText value="Name"/>
+        <p:inputText value="#{registerBean.name}" required="true" label="Name"/>
+
+        <h:outputText value="Email"/>
+        <p:inputText value="#{registerBean.email}" required="true" label="Email"/>
+
+        <h:outputText value="Password"/>
+        <p:password value="#{registerBean.password}" feedback="true" required="true" label="Password"/>
+    </p:panelGrid>
+
+    <div class="stack mt-2">
+        <p:commandButton value="Register" action="#{registerBean.register}" ajax="false"/>
+<p:button value="Back to Login" outcome="login" styleClass="ui-button-secondary"/>
+    </div>
+</h:form>
+</div>
+</h:body>
+</html>

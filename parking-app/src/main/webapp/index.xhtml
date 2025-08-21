@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Parking App</title>
+    <h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+<h:body>
+
+<div class="ribbon">
+  <div class="brand">🚗 Parking App</div>
+</div>
+
+<div class="container">
+    <h1>Parking App</h1>
+    <p class="subtitle">Welcome, <strong>#{loginBean.loggedIn ? loginBean.current.name : 'Guest'}</strong>!</p>
+
+    <h:panelGroup rendered="#{!loginBean.loggedIn}">
+        <div class="stack">
+            <p:button value="Login" outcome="login"/>
+            <p:button value="Register" outcome="register" styleClass="ui-button-secondary"/>
+        </div>
+    </h:panelGroup>
+
+    <h:panelGroup rendered="#{loginBean.loggedIn}">
+        <div class="stack">
+            <p:button value="New Booking" outcome="newBooking"/>
+            <p:button value="Manage Bookings" outcome="manageBookings" styleClass="ui-button-secondary"/>
+            <h:form>
+                <p:commandButton value="Logout" action="#{loginBean.logout}" ajax="false" styleClass="ui-button-danger"/>
+            </h:form>
+        </div>
+    </h:panelGroup>
+</div>
+</h:body>
+</html>

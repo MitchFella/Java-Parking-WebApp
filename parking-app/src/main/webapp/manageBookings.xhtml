@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Manage Bookings • Parking App</title>
+    <h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+<h:body>
+
+<h:panelGroup rendered="#{!loginBean.loggedIn}">
+  <div class="container">
+    <h:form>
+      <p class="subtitle">Please log in to view your bookings.</p>
+      <p:link outcome="login" value="Go to Login"/>
+    </h:form>
+  </div>
+</h:panelGroup>
+
+<h:form rendered="#{loginBean.loggedIn}">
+<div class="container">
+    <h2>Your Bookings</h2>
+    <p class="subtitle">Review, manage, or add new reservations</p>
+
+    <p:dataTable value="#{bookingBean.forUser(loginBean.current.email)}" var="b"
+                 paginator="true" rows="10" responsiveLayout="scroll">
+        <p:column headerText="ID"><h:outputText value="#{b.id}"/></p:column>
+        <p:column headerText="Vehicle"><h:outputText value="#{b.vehicleReg}"/></p:column>
+        <p:column headerText="Date"><h:outputText value="#{b.date}"/></p:column>
+        <p:column headerText="Start">
+            <h:outputText value="#{b.startTime}">
+                <f:convertDateTime type="time" pattern="HH:mm"/>
+            </h:outputText>
+        </p:column>
+        <p:column headerText="Hours"><h:outputText value="#{b.hours}"/></p:column>
+        <p:column headerText="Spot"><h:outputText value="#{b.spot}"/></p:column>
+        <p:column headerText="Actions" exportable="false">
+            <p:commandButton value="Delete"
+                             actionListener="#{bookingBean.delete(b.id)}"
+                             update="@form"
+                             styleClass="ui-button-danger"/>
+        </p:column>
+    </p:dataTable>
+
+    <div class="stack mt-4">
+        <p:button value="New Booking" outcome="newBooking"/>
+        <p:button value="Home" outcome="index" styleClass="ui-button-secondary"/>
+
+    </div>
+</div>
+</h:form>
+</h:body>
+</html>

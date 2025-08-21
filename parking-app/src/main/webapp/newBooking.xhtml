@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>New Booking • Parking App</title>
+    <h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+<h:body>
+
+<h:panelGroup rendered="#{!loginBean.loggedIn}">
+  <div class="container">
+    <h:form>
+      <p class="subtitle">Please log in to create a booking.</p>
+      <p:link outcome="login" value="Go to Login"/>
+    </h:form>
+  </div>
+</h:panelGroup>
+
+<h:form rendered="#{loginBean.loggedIn}">
+<div class="container">
+    <h2>New Booking</h2>
+    <p class="subtitle">Reserve your spot in seconds</p>
+
+    <p:panelGrid columns="2" columnClasses="label,value">
+        <h:outputText value="Vehicle Reg"/>
+        <p:inputText value="#{bookingBean.vehicleReg}" required="true" label="Vehicle Reg"/>
+
+        <h:outputText value="Date"/>
+        <p:datePicker value="#{bookingBean.date}" pattern="yyyy-MM-dd" required="true" label="Date"/>
+
+        <h:outputText value="Start Time"/>
+        <p:datePicker value="#{bookingBean.startTime}" timeOnly="true" pattern="HH:mm" required="true" label="Start Time"/>
+
+        <h:outputText value="Hours"/>
+		<p:inputText value="#{bookingBean.hours}" required="true" label="Hours"/>
+
+        <h:outputText value="Spot"/>
+        <p:inputText value="#{bookingBean.spot}" required="true" label="Spot" placeholder="e.g., A12"/>
+    </p:panelGrid>
+
+    <div class="stack mt-2">
+        <p:commandButton value="Create Booking" action="#{bookingBean.create(loginBean.current.email)}" ajax="false"/>
+        <p:button value="Manage bookings" outcome="manageBookings" styleClass="ui-button-secondary"/>
+        <p:link outcome="index" value="Home"/>
+    </div>
+</div>
+</h:form>
+</h:body>
+</html>

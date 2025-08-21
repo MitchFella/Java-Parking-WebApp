@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Login • Parking App</title>
+    <h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+<h:body>
+<div class="container">
+<h:form>
+    <h2>Login</h2>
+    <p class="subtitle">Enter your credentials to continue</p>
+
+    <p:panelGrid columns="2" columnClasses="label,value">
+        <h:outputText value="Email" />
+        <p:inputText value="#{loginBean.email}" required="true" label="Email"/>
+
+        <h:outputText value="Password" />
+        <p:password value="#{loginBean.password}" feedback="false" required="true" label="Password"/>
+    </p:panelGrid>
+
+    <div class="stack mt-2">
+        <p:commandButton value="Login" action="#{loginBean.login}" ajax="false"/>
+	<p:button value="Create Account" outcome="register" styleClass="ui-button-secondary"/>
+    </div>
+</h:form>
+</div>
+</h:body>
+</html>
