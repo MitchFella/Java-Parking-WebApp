@@ -1,7 +1,7 @@
 # Java-Parking-WebApp
 A Simple Java EE web application for managaing parking bookings. Built with Maven, JSF(primefaces) and deployed as a WAR on tomcat.
 
-## ✨ Features
+## Features
 - User registration and login
 - Create new parking bookings (date, time, duration, spot, vehicle reg)
 - View and manage existing bookings
